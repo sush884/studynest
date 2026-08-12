@@ -11,6 +11,24 @@ function getAuthHeaders(): HeadersInit {
   return headers;
 }
 
+async function parseResponse(res: Response) {
+  const text = await res.text();
+  if (!text) return null;
+  try {
+    return JSON.parse(text);
+  } catch {
+    return text;
+  }
+}
+
+function getErrorMessage(responseBody: any, fallback: string) {
+  if (typeof responseBody === 'string') return responseBody;
+  if (responseBody && typeof responseBody === 'object') {
+    return responseBody.error || responseBody.message || JSON.stringify(responseBody);
+  }
+  return fallback;
+}
+
 export const api = {
   // Auth
   async signup(data: { name: string; email: string; password: string }): Promise<{ user: User; token: string }> {
@@ -19,11 +37,10 @@ export const api = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
+    const result = await parseResponse(res);
     if (!res.ok) {
-      const err = await res.json();
-      throw new Error(err.error || 'Signup failed');
+      throw new Error(getErrorMessage(result, 'Signup failed'));
     }
-    const result = await res.json();
     if (result.token) localStorage.setItem('studynest_auth_token', result.token);
     return result;
   },
