@@ -2833,6 +2833,19 @@ async function startServer() {
   });
 }
 
+// API error handling for serverless and Express runtimes
+app.use('/api', (req, res) => {
+  res.status(404).json({ error: 'API endpoint not found' });
+});
+
+app.use((err: any, _req: any, res: any, _next: any) => {
+  console.error('Unhandled server error:', err);
+  if (res.headersSent) {
+    return;
+  }
+  res.status(err.status || 500).json({ error: err.message || 'A server error occurred' });
+});
+
 export default app;
 
 if (!process.env.VERCEL) {
