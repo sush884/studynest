@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#db2777"/>
+      <stop offset="100%" stop-color="#be185d"/>
+    </linearGradient>
+    <linearGradient id="bookGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#fce7f3"/>
+    </linearGradient>
+    <linearGradient id="sproutGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded box -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)"/>
+  
+  <!-- Outer Nest Circle -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="#fbcfe8" stroke-width="12" stroke-dasharray="20 12" opacity="0.4"/>
+
+  <!-- Open Book -->
+  <g transform="translate(116, 170)">
+    <!-- Left Page -->
+    <path d="M 140 180 C 80 160, 20 170, 0 185 L 0 30 C 20 15, 80 5, 140 25 Z" fill="url(#bookGrad)"/>
+    <!-- Right Page -->
+    <path d="M 140 180 C 200 160, 260 170, 280 185 L 280 30 C 260 15, 200 5, 140 25 Z" fill="url(#bookGrad)"/>
+    <!-- Spine Line -->
+    <line x1="140" y1="25" x2="140" y2="180" stroke="#f43f5e" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <!-- Growth Sprout in Center -->
+  <g transform="translate(256, 170)">
+    <!-- Stem -->
+    <path d="M 0 50 Q 0 10 0 -20" stroke="#10b981" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <!-- Left Leaf -->
+    <path d="M 0 10 C -30 -10 -40 -40 0 -40 C 0 -10 0 10 0 10 Z" fill="url(#sproutGrad)"/>
+    <!-- Right Leaf -->
+    <path d="M 0 -5 C 30 -25 40 -55 0 -55 C 0 -25 0 -5 0 -5 Z" fill="url(#sproutGrad)"/>
+    <!-- Sparkle/Sun -->
+    <circle cx="0" cy="-75" r="8" fill="#fbbf24"/>
+  </g>
+</svg>

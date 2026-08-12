@@ -1,0 +1,22 @@
+{
+  "short_name": "StudyNest",
+  "name": "StudyNest — Daily YouTube Study Habit",
+  "description": "Turn YouTube learning into a daily study habit with StudyNest.",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#fdf2f8",
+  "theme_color": "#ec4899",
+  "display": "standalone",
+  "orientation": "portrait"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "StudyNest — Personal Learning Portal",
+  "description": "Learn together. Stay consistent. Grow together. Turn long YouTube playlists into manageable daily learning sessions with self-study and group study features.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
