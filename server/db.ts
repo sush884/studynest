@@ -2,13 +2,17 @@ import initSqlJs, { Database } from 'sql.js';
 import path from 'path';
 import fs from 'fs';
 
-const dbPath = path.join(process.cwd(), 'studynest.db');
+const isServerless = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.FUNCTIONS_WORKER_RUNTIME);
+const dbPath = isServerless ? path.join('/tmp', 'studynest.db') : path.join(process.cwd(), 'studynest.db');
 
 let db: Database;
 
 const saveDB = () => {
   if (!db) return;
   try {
+    if (!fs.existsSync(path.dirname(dbPath))) {
+      fs.mkdirSync(path.dirname(dbPath), { recursive: true });
+    }
     const data = db.export();
     const buffer = Buffer.from(data);
     fs.writeFileSync(dbPath, buffer);
